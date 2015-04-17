@@ -1,7 +1,6 @@
 'use strict';
 
 var AnyFS = require('anyfs');
-var test = require('anyfs').test;
 var Adapter = require('./');
 
 var Server = require('ftp-test-server');
@@ -22,4 +21,7 @@ var adapter = new Adapter({
 
 var fs = new AnyFS(adapter);
 
-AnyFS.test(fs);
+// wait for FTP server
+AnyFS.test(fs, {
+    delay: 1000,
+});

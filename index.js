@@ -96,7 +96,7 @@ Adapter.prototype.list = function(p, cb) {
         }
 
         cb(null, list);
-    })
+    });
 };
 
 Adapter.prototype.mkdir = function(p, cb) {
@@ -105,21 +105,16 @@ Adapter.prototype.mkdir = function(p, cb) {
     });
 };
 
-Adapter.prototype.delete = function(p, metadata, cb) {
-    // if (typeof metadata === 'function') {
-    //     cb = metadata;
-    //     metadata = null;
-    // }
+Adapter.prototype.delete = function(p, cb) {
+    this.ftp.raw.dele(p, function(err) {
+        cb(parseError(err));
+    });
+};
 
-    if (metadata.is_dir) {
-        this.ftp.raw.rmd(p, function(err) {
-            cb(parseError(err));
-        });
-    } else {
-        this.ftp.raw.dele(p, function(err) {
-            cb(parseError(err));
-        });
-    }
+Adapter.prototype.deleteDir = function(p, cb) {
+    this.ftp.raw.rmd(p, function(err) {
+        cb(parseError(err));
+    });
 };
 
 Adapter.prototype.move = function(a, b, cb) {

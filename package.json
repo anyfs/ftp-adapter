@@ -1,6 +1,6 @@
 {
   "name": "anyfs-ftp-adapter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "FTP adapter for AnyFS",
   "main": "index.js",
   "scripts": {
@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/anyfs/ftp-adapter",
   "devDependencies": {
-    "anyfs": "^0.1.4",
+    "anyfs": "^0.1.5",
     "ftp-test-server": "0.0.2",
     "mocha": "^2.2.4"
   },
